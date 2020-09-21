@@ -1,4 +1,5 @@
 import App from "./App";
+import User from "./User";
 
 
-export { App};
+export { App, User };

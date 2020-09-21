@@ -40,6 +40,7 @@ npm start
 src
 ├── components
 │   ├── App.js
+│   ├── User.js
 │   └── index.js
 ├── index.css
 └── index.js
