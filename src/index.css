@@ -20,14 +20,43 @@ body {
   font-size: 35px;
   margin-top: 2px;
 }
-
-.container{
+.container {
   margin: 10px auto;
   width: 60vw;
+}
+.app__container{
   padding: 5px;
   border: 1px solid black;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.user__name{
+  font-size: larger;
+  font-weight: bolder;
+  color: #888888;
+}
+
+.user__details{
+  background-color: aquamarine;
+  padding: 5px;
+  border-radius: 10px;
+  margin: 5px;
 }
 
 .user__details p span{
   color: #888888;
+}
+
+.btn{
+    background-color: orange;
+    color: white;
+    height: 40px;
+    width: 120px;
+    border-radius: 5px;
+    border: none;
+    font-size: large;
+    font-weight: 900;
+    cursor: pointer;
+    margin-right: 30px;
 }

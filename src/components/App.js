@@ -3,7 +3,20 @@ import { User } from './';
 function App() {
 
   const [data, setData] = useState([]);
-  const [click, setClick] = useState(false);
+  const [currentUser, setUser] = useState([]);
+
+
+  const handleButtonClick =(e, key) => {
+    e.preventDefault();
+    const currentUsers = [...currentUser];
+
+    if(!currentUsers[key])
+    currentUsers[key] = data[key];
+    else
+    currentUsers[key] = null;
+
+    setUser(currentUsers);
+  }
   
   useEffect(() => {
     const url = "https://jsonplaceholder.typicode.com/users";
@@ -11,8 +24,9 @@ function App() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        // console.log("DATA", data[0]);
         setData(data);
+        const currentUsers = new Array(data.length).fill(null);
+        setUser(currentUsers)
       });
   }, []);
 
@@ -21,10 +35,18 @@ function App() {
     <div className='App'>
       <p className='heading'>Users From JSONPlaceholder API</p>
       {data.map((user, key) => (
-        <div className='container' key={key}>
-          <p>{user.name}</p>
-          <button onClick={() => setClick(!click)}>Click Here</button>
-          {click ? <User user={user} key={key}/> : null}
+        <div className='container' key={user.id}>
+          <div className='app__container'>
+            <p className="user__name">{user.name}</p>
+            <button
+              className='btn'
+              onClick={(e) => {
+                handleButtonClick(e, key);
+              }}>
+              Click Here
+            </button>
+          </div>
+          {currentUser[key] ? <User user={currentUser[key]} /> : null}
         </div>
       ))}
     </div>
